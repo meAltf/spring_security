@@ -11,3 +11,6 @@ public class SpringSecurityLearnApplication {
 	}
 
 }
+
+
+// CSRF : Cross Site Request Forgery
