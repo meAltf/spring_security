@@ -14,3 +14,5 @@ public class SpringSecurityLearnApplication {
 
 
 // CSRF : Cross Site Request Forgery
+// GET : this method allow without token generating, bcz it's default but POST, PUT, DELETE etc.
+// these all required username password along with token then only it can give access.
