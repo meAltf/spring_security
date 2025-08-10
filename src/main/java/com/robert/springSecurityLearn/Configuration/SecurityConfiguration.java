@@ -17,6 +17,7 @@ public class SecurityConfiguration {
         httpSecurity.csrf(customizer -> customizer.disable());
         httpSecurity.authorizeHttpRequests(request -> request.anyRequest().authenticated());
         httpSecurity.formLogin(Customizer.withDefaults());
+        httpSecurity.httpBasic(Customizer.withDefaults());
 
         return httpSecurity.build();
     }
