@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -38,8 +40,23 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new InMemoryUserDetailsManager();
+    public UserDetailsService userDetailsService() {
+
+        UserDetails userDetails1 = User
+                .withDefaultPasswordEncoder()
+                .username("broon")
+                .password("@broon")
+                .roles("USER")
+                .build();
+
+        UserDetails userDetails2 = User
+                .withDefaultPasswordEncoder()
+                .username("richard")
+                .password("@richard")
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
     }
 }
 
