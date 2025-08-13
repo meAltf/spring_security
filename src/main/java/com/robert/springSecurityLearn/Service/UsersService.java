@@ -17,6 +17,9 @@ public class UsersService {
     @Autowired
     private AuthenticationManager authManager;
 
+    @Autowired
+    private JwtService jwtService;
+
     public void registerUser(Users newUser) {
         Users user = new Users();
         user.setId(newUser.getId());
@@ -29,7 +32,9 @@ public class UsersService {
     public String verifyUser(Users user) {
         Authentication authentication = authManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
-        if (authentication.isAuthenticated()) return "Success!";
+        if (authentication.isAuthenticated()){
+            return jwtService.generateToken();
+        }
         return "Fail!";
     }
 }
