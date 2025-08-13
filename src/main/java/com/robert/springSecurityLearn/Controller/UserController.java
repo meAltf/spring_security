@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UsersService usersService;
 
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(13);
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(13);
 
     @PostMapping("/register")
     public ResponseEntity<Users> registerUser(@RequestBody Users newUser) {
@@ -26,5 +26,11 @@ public class UserController {
         newUser.setPassword(encoder.encode(newUser.getPassword()));
         usersService.registerUser(newUser);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Users user) {
+
+        return usersService.verifyUser(user);
     }
 }
