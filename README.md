@@ -31,6 +31,7 @@ This project aims to provide a practical, hands-on learning experience for Sprin
 *   **JWT (JSON Web Token):** Utilizes JWT for secure stateless authentication.
 *   **Data Persistence:** Integrates with a database (MySQL) using Spring Data JPA.
 *   **Customizable:** Designed to be easily extended and adapted to different security requirements.
+*   **Oauth2:** Implemented OAuth2 security using Google and GitHub.
 
 ## 🛠️ Tech Stack
 
@@ -72,6 +73,8 @@ The following environment variables are required for the application to run corr
 *   `SPRING_DATASOURCE_USERNAME`: Your MySQL username. Example: `root`
 *   `SPRING_DATASOURCE_PASSWORD`: Your MySQL password. Example: `password`
 *   `JWT_SECRET_KEY`: Secret key for JWT token generation.  Generate a strong, random key.
+*   `spring.security.oauth2.client.registration.google.client-id`: Client Id for Google cloud console.
+*   `spring.security.oauth2.client.registration.google.client-secret`: Secret Id for Google cloud console.
 
 ## 🚀 Usage
 
